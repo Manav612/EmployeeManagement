@@ -6,16 +6,17 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
-import React, {useEffect, useRoute, useState} from 'react';
+import React, { useEffect, useRoute, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import Octicons from 'react-native-vector-icons/Octicons';
 import TouchID from 'react-native-touch-id';
 import socketServices from '../../Socket/socket';
 import { useNavigation } from '@react-navigation/native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const User = (props) => {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
   const [isAuth, setIsAuth] = useState(false);
   const optionalConfigObject = {
     title: 'Authentication Required', // Android
@@ -64,7 +65,7 @@ const User = (props) => {
             setIsAuth(success);
             setTimeout(() => {
               submitAttendance();
-            }, 3000);
+            }, 2000);
           })
           .catch(err => {
             BackHandler.exitApp();
@@ -73,7 +74,7 @@ const User = (props) => {
     });
   };
 
-  const {name, id, salary, designation} = props.route.params;
+  const { name, id, salary, designation } = props.route.params;
   const [attendanceStatus, setAttendanceStatus] = useState('present');
 
   const [cd, setCD] = useState(moment());
@@ -94,13 +95,13 @@ const User = (props) => {
     console.log("-------------------------------------------");
     socketServices.initializeSocket();
     console.log("////////////////////////////");
-    
+
   }, []);
 
   const submitAttendance = async () => {
-    const data="done0";
-    socketServices.emit('send-message',data);
-   
+    const data = "done0";
+    socketServices.emit('send-message', data);
+
     try {
       const attendanceData = {
         employeeId: id,
@@ -109,7 +110,7 @@ const User = (props) => {
         status: attendanceStatus,
       };
       const response = await axios.post(
-        'https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app/attendance',
+        'https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/attendance',
         attendanceData,
       );
       if (response.status === 200) {
@@ -117,19 +118,25 @@ const User = (props) => {
         console.log('==============>>>>>>> Attendance  Submitted Successfully');
 
         navigation.goBack();
-        
+
       }
     } catch (error) {
       console.log('error while submitting attendance', error);
     }
-    
+
   };
   return (
-    <ScrollView style={{flex: 1, paddingHorizontal: 10}}>
-      <View style={{flex: 1, paddingVertical: '5%', paddingHorizontal: '5%'}}>
-        <Text style={{color: '#000', fontSize: 25, textAlign: 'center'}}>
-          User Details
-        </Text>
+    <ScrollView style={{ flex: 1, paddingHorizontal: 10 }}>
+      <View>
+        <View style={{ gap: 20, flexDirection: 'row', paddingVertical: 20, alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <AntDesign name="arrowleft" size={24} color={'#000'} />
+          </TouchableOpacity>
+          <Text style={{ color: '#000', fontSize: 25, fontWeight: 'bold', textAlign: 'center' }}>
+            User Details
+          </Text>
+        </View>
+
         <View
           style={{
             flexDirection: 'row',
@@ -142,18 +149,20 @@ const User = (props) => {
             style={{
               color: '#000',
               borderWidth: 1,
-              width: 60,
+              width: 90,
+                        fontSize: 20,
               textAlign: 'center',
             }}
             onPress={goToPrevDay}>
             Prev Page
           </Text>
-          <Text style={{color: '#000'}}>{formatDate(cd)}</Text>
+          <Text style={{ color: '#000',fontSize:20 }}>{formatDate(cd)}</Text>
           <Text
             style={{
               color: '#000',
               borderWidth: 1,
-              width: 60,
+              width: 90,
+                        fontSize: 20,
               textAlign: 'center',
             }}
             onPress={goToNextDay}>

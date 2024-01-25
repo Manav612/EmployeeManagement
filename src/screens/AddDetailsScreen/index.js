@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 import axios from 'axios';
-const AddDetails = () => {
+const AddDetails = ({ navigation }) => {
   const [name, setName] = useState('');
   const [eid, setEid] = useState('');
   const [dob, setDOB] = useState('');
@@ -34,7 +36,7 @@ const AddDetails = () => {
 
     const response = await axios
       .post(
-        'https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app/addEmployee',
+        'https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/addEmployee',
         employeeData,
       )
       .then(response => {
@@ -58,26 +60,18 @@ const AddDetails = () => {
     console.log('emplloyeeeeeeee', response);
   };
   return (
-    <ScrollView style={{flex: 1, paddingHorizontal: 10}}>
-      <View style={{paddingVertical: '10%', paddingHorizontal: '5%'}}>
-        <View>
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: '#000',
-              marginVertical: 15,
-            }}>
+    <ScrollView style={{ flex: 1, paddingHorizontal: 10 }}>
+      <View style={{}}>
+        <View style={{ gap: 20, flexDirection: 'row', paddingVertical: 20, alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <AntDesign name="arrowleft" size={24} color={'#000'} />
+          </TouchableOpacity>
+          <Text style={{ color: '#000', fontSize: 25, fontWeight: 'bold', textAlign: 'center' }}>
             Add new Employee
           </Text>
-          {/* <TextInput
-      style={{padding:10,marginVertical:'5%',borderWidth:1,borderRadius:5}}
-      placeholder='India'
-      placeholderTextColor={'#000'}
-      /> */}
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             Full Name (First and last Name)
           </Text>
           <TextInput
@@ -93,7 +87,7 @@ const AddDetails = () => {
           />
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             Employee Id
           </Text>
           <TextInput
@@ -109,7 +103,7 @@ const AddDetails = () => {
           />
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             designation
           </Text>
           <TextInput
@@ -125,7 +119,7 @@ const AddDetails = () => {
           />
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             Mobile Number
           </Text>
           <TextInput
@@ -141,7 +135,7 @@ const AddDetails = () => {
           />
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             Date Of Birth
           </Text>
           <TextInput
@@ -157,7 +151,7 @@ const AddDetails = () => {
           />
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             joining Date
           </Text>
           <TextInput
@@ -178,15 +172,15 @@ const AddDetails = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             Active Employee
           </Text>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             True
           </Text>
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             salary
           </Text>
           <TextInput
@@ -202,7 +196,7 @@ const AddDetails = () => {
           />
         </View>
         <View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#000' }}>
             Address
           </Text>
           <TextInput
@@ -217,8 +211,8 @@ const AddDetails = () => {
             value={a}
           />
         </View>
-        <TouchableOpacity onPress={handleregister}>
-          <Text>Add Employee</Text>
+        <TouchableOpacity style={{ width: 150, justifyContent: 'center', alignItems: 'center', height: 50, borderRadius: 10, backgroundColor: '#000' }} onPress={handleregister}>
+          <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>Add Employee</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>

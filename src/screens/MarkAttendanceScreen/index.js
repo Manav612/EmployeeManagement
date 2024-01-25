@@ -9,6 +9,8 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import socketServices from '../../Socket/socket';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 const MarkAttendance = ({ navigation }) => {
     const [cd, setCD] = useState(moment());
     const goToNextDay = () => {
@@ -30,7 +32,7 @@ const MarkAttendance = ({ navigation }) => {
         const fetchEmployeeData = async () => {
             try {
                 const response = await axios.get(
-                    'https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app/employees',
+                    'https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/employees',
                 );
                 setEmployees(response.data);
             } catch (error) {
@@ -44,7 +46,7 @@ const MarkAttendance = ({ navigation }) => {
     const fetchAttendanceData = async () => {
         try {
             const response = await axios.get(
-                `https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app/attendance`,
+                `https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/attendance`,
                 {
                     params: {
                         date: cd.format('MMMM D,YYYY'),
@@ -59,14 +61,14 @@ const MarkAttendance = ({ navigation }) => {
     useEffect(() => {
         fetchAttendanceData();
     }, [cd]);
-    useEffect(()=>{
+    useEffect(() => {
         socketServices.initializeSocket()
-        socketServices.on('recive-message',(data)=>{
-            console.log('data',data);
+        socketServices.on('recive-message', (data) => {
+            console.log('data', data);
             fetchAttendanceData();
-            
+
         })
-    },[])
+    }, [])
 
     const employeeWithAttendance = employees.map(employee => {
         const attendanceRecord = attendance.find(
@@ -80,33 +82,41 @@ const MarkAttendance = ({ navigation }) => {
 
     return (
         <ScrollView style={{ flex: 1, paddingHorizontal: 10 }}>
-            <Text style={{ color: '#000', fontSize: 25, textAlign: 'center' }}>
-                Mark Attendance
-            </Text>
+            <View style={{gap: 20, flexDirection: 'row', paddingVertical: 20,alignItems:'center' }}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+
+                    <AntDesign name="arrowleft" size={24} color={'#000'} />
+                </TouchableOpacity>
+                <Text style={{ color: '#000', fontSize: 25, textAlign: 'center' }}>
+                    Mark Attendance
+                </Text>
+            </View>
             <View
                 style={{
                     flexDirection: 'row',
                     justifyContent: 'center',
                     gap: 10,
                     alignItems: 'center',
-                    marginVertical: 20,
+                    marginVertical: 10,
                 }}>
                 <Text
                     style={{
                         color: '#000',
                         borderWidth: 1,
-                        width: 60,
+                        width: 90,
+                        fontSize: 20,
                         textAlign: 'center',
                     }}
                     onPress={goToPrevDay}>
                     Prev Page
                 </Text>
-                <Text style={{ color: '#000' }}>{formatDate(cd)}</Text>
+                <Text style={{ color: '#000', fontSize: 20 }}>{formatDate(cd)}</Text>
                 <Text
                     style={{
                         color: '#000',
                         borderWidth: 1,
-                        width: 60,
+                        width: 90,
+                        fontSize: 20,
                         textAlign: 'center',
                     }}
                     onPress={goToNextDay}>

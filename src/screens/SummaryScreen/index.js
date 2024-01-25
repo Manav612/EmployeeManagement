@@ -6,12 +6,13 @@ import {
   ScrollView,
   Button,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import axios from 'axios';
-import {DataTable} from 'react-native-paper';
-import FilteredEmployees from '../../components/FilterData';
-const Summary = () => {
+import { DataTable } from 'react-native-paper';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+const Summary = ({navigation}) => {
   const [attendanceData, setAttendanceData] = useState([]);
   const [cd, setCD] = useState(moment());
 
@@ -36,7 +37,7 @@ const Summary = () => {
   const fetchAttendanceReport = async selectedMonth => {
     try {
       const response = await axios.get(
-        `https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app/attendance-report-all-employees`,
+        `https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/attendance-report-all-employees`,
         {
           params: {
             month: selectedMonth.month() + 1,
@@ -53,8 +54,16 @@ const Summary = () => {
   };
 
   return (
-    <ScrollView style={{flex: 1, paddingHorizontal: 10}}>
-      <Text style={styles.head}>Summary Report of Employees</Text>
+    <ScrollView style={{ flex: 1, paddingHorizontal: 10 }}>
+
+      <View style={{ gap: 20, flexDirection: 'row', paddingVertical: 20, alignItems: 'center' }}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <AntDesign name="arrowleft" size={24} color={'#000'} />
+        </TouchableOpacity>
+        <Text style={{ color: '#000', fontSize: 25, textAlign: 'center' }}>
+          Summary Report of Employees
+        </Text>
+      </View>
 
       <View
         style={{
@@ -68,18 +77,20 @@ const Summary = () => {
           style={{
             color: '#000',
             borderWidth: 1,
-            width: 60,
+            width: 90,
+            fontSize: 20,
             textAlign: 'center',
           }}
           onPress={goToPrevMonth}>
           Prev Page
         </Text>
-        <Text style={{color: '#000'}}>{formatDate(cd)}</Text>
+        <Text style={{ color: '#000', fontSize: 20 }}>{formatDate(cd)}</Text>
         <Text
           style={{
             color: '#000',
             borderWidth: 1,
-            width: 60,
+            width: 90,
+            fontSize: 20,
             textAlign: 'center',
           }}
           onPress={goToNextMonth}>
@@ -91,7 +102,7 @@ const Summary = () => {
 
       <View>
         {attendanceData.map((item, index) => (
-          <View style={{flex: 1}}>
+          <View key={index} style={{ flex: 1 }}>
             <View
               key={index}
               style={{
@@ -153,8 +164,8 @@ const Summary = () => {
 export default Summary;
 
 const styles = StyleSheet.create({
-  head: {color: '#000', fontSize: 25, textAlign: 'center'},
-  letter: {color: '#000', textAlign: 'center'},
+  head: { color: '#000', fontSize: 25, textAlign: 'center' },
+  letter: { color: '#000', textAlign: 'center' },
   FirstLetter: {
     color: '#fff',
     fontSize: 25,

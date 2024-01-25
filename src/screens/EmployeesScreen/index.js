@@ -20,7 +20,7 @@ const Employees = ({navigation}) => {
     const fetchEmployeeData = async () => {
       try {
         const response = await axios.get(
-          'https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app/employees',
+          'https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/employees',
         );
         setEmployees(response.data);
       } catch (error) {
@@ -32,18 +32,18 @@ const Employees = ({navigation}) => {
 
   console.log(employees);
   return (
-    // <ScrollView style={{flex: 1, paddingHorizontal: 10}}>
       <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <Text style={{color: '#000', fontSize: 25, textAlign: 'center'}}>
+        <Text style={{color: '#000', fontSize: 25, textAlign: 'center',marginVertical:10}}>
           Search Employees
         </Text>
         <View
           style={{
             flexDirection: 'row',
-            justifyContent: 'center',
+            justifyContent:'space-between',
             alignItems: 'center',
+            paddingHorizontal:20
           }}>
-             <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')}>
+             <TouchableOpacity onPress={()=>navigation.goBack()}>
 
           <AntDesign name="arrowleft" size={24} color={'#000'} />
              </TouchableOpacity>
@@ -52,16 +52,22 @@ const Employees = ({navigation}) => {
             style={{
               flexDirection: 'row',
               alignItems: 'center',
-              justifyContent:'space-between'
+              justifyContent:'center',
+              width:150,
+              gap:20,
+              borderRadius:20
             }}>
             
             <AntDesign name="search1" size={24} color={'#000'} />
             <TextInput
+              style={{width:100}}
               placeholder="Search"
               value={input}
               onChangeText={text => setInput(text)}
             />
-            {employees.length > 0 && (
+           
+          </TouchableOpacity>
+          {employees.length > 0 && (
               <View>
                 <TouchableOpacity
                   onPress={() => navigation.navigate('AddDetails')}>
@@ -69,7 +75,6 @@ const Employees = ({navigation}) => {
                 </TouchableOpacity>
               </View>
             )}
-          </TouchableOpacity>
         </View>
         {employees.length > 0 ? (
           <SearchResults data={employees} input={input} setInput={setInput} />
@@ -83,7 +88,6 @@ const Employees = ({navigation}) => {
           </View>
         )}
       </View>
-    // </ScrollView>
   );
 };
 

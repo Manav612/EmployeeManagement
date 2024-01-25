@@ -38,11 +38,11 @@ console.log("DeviceToken : ",token);
               alignItems: 'center',
               marginVertical: '3%',
             }}>
-            <Feather name="bar-chart" size={24} color={'#000'} />
-            <Text style={{fontSize: 24, fontWeight: 'bold', color: '#000'}}>
+            <Feather name="bar-chart" size={24} color={'#fff'} />
+            <Text style={{fontSize: 24, fontWeight: 'bold', color: '#fff'}}>
               Employee Management System
             </Text>
-            <Entypo name="lock" size={24} color={'#000'} />
+            <Entypo name="lock" size={24} color={'#fff'} />
           </View>
           <View
             style={{
@@ -110,7 +110,7 @@ console.log("DeviceToken : ",token);
               backgroundColor: '#fff',
               borderRadius: 7,
             }}>
-            <TouchableOpacity
+            <View
               style={{
                 flexDirection: 'row',
                 height: 60,
@@ -127,7 +127,7 @@ console.log("DeviceToken : ",token);
                 Attendance Report
               </Text>
               <AntDesign name="right" size={24} color={'#000'} />
-            </TouchableOpacity>
+            </View>
             <TouchableOpacity
               style={{
                 flexDirection: 'row',
@@ -147,7 +147,7 @@ console.log("DeviceToken : ",token);
               </Text>
               <AntDesign name="right" size={24} color={'#000'} />
             </TouchableOpacity>
-            <TouchableOpacity
+            <View
               style={{
                 flexDirection: 'row',
                 height: 60,
@@ -164,8 +164,8 @@ console.log("DeviceToken : ",token);
                 All Generate Report
               </Text>
               <AntDesign name="right" size={24} color={'#000'} />
-            </TouchableOpacity>
-            <TouchableOpacity
+            </View>
+            <View
               style={{
                 flexDirection: 'row',
                 height: 60,
@@ -182,7 +182,7 @@ console.log("DeviceToken : ",token);
                 OverTime Employee Report
               </Text>
               <AntDesign name="right" size={24} color={'#000'} />
-            </TouchableOpacity>
+            </View>
           </View>
           <View
             style={{
@@ -191,7 +191,7 @@ console.log("DeviceToken : ",token);
               alignItems: 'center',
               marginVertical: '5%',
             }}>
-            <TouchableOpacity
+            <View
               style={{
                 backgroundColor: '#BE93CF',
                 padding: 12,
@@ -215,8 +215,8 @@ console.log("DeviceToken : ",token);
               <Text style={{fontWeight: 'bold', color: '#000'}}>
                 Attendance Criteria
               </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </View>
+            <View
               style={{
                 backgroundColor: '#BE93CF',
                 padding: 12,
@@ -240,7 +240,7 @@ console.log("DeviceToken : ",token);
               <Text style={{fontWeight: 'bold', color: '#000'}}>
                 Increased Workflow
               </Text>
-            </TouchableOpacity>
+            </View>
           </View>
 
           <View
@@ -250,7 +250,7 @@ console.log("DeviceToken : ",token);
               alignItems: 'center',
               marginVertical: '2%',
             }}>
-            <TouchableOpacity
+            <View
               style={{
                 backgroundColor: '#BE93CF',
                 padding: 12,
@@ -274,8 +274,8 @@ console.log("DeviceToken : ",token);
               <Text style={{fontWeight: 'bold', color: '#000'}}>
                 Cost Savings
               </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </View>
+            <View
               style={{
                 backgroundColor: '#BE93CF',
                 padding: 12,
@@ -299,7 +299,7 @@ console.log("DeviceToken : ",token);
               <Text style={{fontWeight: 'bold', color: '#000'}}>
                 Employee Performance
               </Text>
-            </TouchableOpacity>
+            </View>
           </View>
         </LinearGradient>
       </ScrollView>

@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-const SOCKET_URL ='https://8e1a-2405-201-201c-8115-fd09-4cce-43c8-2d49.ngrok-free.app'
+const SOCKET_URL ='https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app'
 class WSService {
     initializeSocket=async()=>{
         try {

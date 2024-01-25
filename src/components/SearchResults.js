@@ -3,9 +3,10 @@ import React from 'react'
 
 const SearchResults = ({data,input,setInput}) => {
   return (
-    <View style={{paddingVertical:'10%',flex:1}}>
+    <View style={{paddingVertical:10,paddingHorizontal:20,flex:1}}>
         <FlatList
         data={data}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => {
             if(item?.employeeName.toLowerCase().includes(input.toLowerCase())){
                 return (
