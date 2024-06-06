@@ -15,10 +15,10 @@ app.use(bodyParser.json());
 
 mongoose
   .connect(
-    'mongodb+srv://manavproject6:Project123@cluster0.iemysft.mongodb.net/',
+    'mongodb+srv://mnvshah612:mnvshah612@cluster0.cgmhqa5.mongodb.net/',
   )
-  .then(() => console.log('connectdddd'))
-  .catch(e => console.log(e));
+  .then(() => console.log('connectdddd to monogodb'))
+  .catch(e => console.log("======>error mdb",e));
 // mongoose.connect('mongodb+srv://admin:admin123@cluster0.zr6n7bw.mongodb.net/Cluster0?retryWrites=true&w=majority').then(()=>console.log("connected")).catch((e)=>console.log("error",e))
 console.log('hello');
 

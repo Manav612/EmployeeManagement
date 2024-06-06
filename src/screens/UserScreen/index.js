@@ -110,7 +110,7 @@ const User = (props) => {
         status: attendanceStatus,
       };
       const response = await axios.post(
-        'https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/attendance',
+        ' https://c567-2405-201-201c-88b2-30d8-6613-8e13-db4a.ngrok-free.app/attendance',
         attendanceData,
       );
       if (response.status === 200) {

@@ -32,7 +32,7 @@ const MarkAttendance = ({ navigation }) => {
         const fetchEmployeeData = async () => {
             try {
                 const response = await axios.get(
-                    'https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/employees',
+                    ' https://c567-2405-201-201c-88b2-30d8-6613-8e13-db4a.ngrok-free.app/employees',
                 );
                 setEmployees(response.data);
             } catch (error) {
@@ -46,7 +46,7 @@ const MarkAttendance = ({ navigation }) => {
     const fetchAttendanceData = async () => {
         try {
             const response = await axios.get(
-                `https://0aac-2409-40c1-1000-60d3-8c4d-c12-1a17-e330.ngrok-free.app/attendance`,
+                ` https://c567-2405-201-201c-88b2-30d8-6613-8e13-db4a.ngrok-free.app/attendance`,
                 {
                     params: {
                         date: cd.format('MMMM D,YYYY'),
