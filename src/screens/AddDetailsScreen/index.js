@@ -66,7 +66,7 @@ const AddDetails = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <AntDesign name="arrowleft" size={24} color={'#000'} />
           </TouchableOpacity>
-          <Text style={{ color: '#000', fontSize: 25, fontWeight: 'bold', textAlign: 'center' }}>
+          <Text style={{ color: '#000', fontSize: 28, fontWeight: 'bold', textAlign: 'center' }}>
             Add new Employee
           </Text>
         </View>
